@@ -50,7 +50,9 @@ def test_department_links():
 # in unittest you'll definitely learn the importance of minding the namespace
 # you're mocking in, as well as fact that magic mock can return some very un-
 # expected results (like creating a new mock object instead of returning the
-# one you were working with from a function...)
+# one you were working with from a function - it's probably this behavior that
+# allows `unittest` to do strange things, like break a pyspark session's 
+# singleton pattern...)
 def test_mock_method(mocker):
     mocker.patch.object(walmartJSONParser, 'get_base_url')
     walmartJSONParser.get_base_url.return_value = "testy testy - it's the besty"
